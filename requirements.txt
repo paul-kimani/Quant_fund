@@ -4,3 +4,5 @@ yfinance
 pandas
 altair
 python-dotenv
+plotly
+google.generativeai
