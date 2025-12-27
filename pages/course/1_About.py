@@ -1,19 +1,20 @@
 import streamlit as st
 from utils.auth import supabase
-from st_pages import add_page_title, hide_pages
 
-# 1. Security Check
+# 1. SECURITY CHECK
 if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.warning("⛔ Access Restricted. Please login from the main page.")
     st.stop()
 
-st.set_page_config(page_title="Dashboard", page_icon="📈", layout="wide")
+# REMOVED: st.set_page_config(...) 
+# REASON: The main app.py handles the config. Calling it again here causes errors.
 
+# REMOVED: from st_pages import ...
+# REASON: You are using native st.navigation in app.py now.
+
+# 2. PAGE CONTENT
 st.title("About the course")
 st.markdown("---")
-
-
-hide_pages(["Thank you"])
 
 st.markdown("This streamlit app is a user-friendly interface designed by Paul to enhance your learning experience for the **DE Zoomcamp** course offered by [DataTalksClub.](https://datatalks.club/)")
 
@@ -22,7 +23,7 @@ st.image("https://i.ytimg.com/vi/bkJZDmreIpA/maxresdefault.jpg")
 st.markdown("""
 ### 📚 Course Description
 As I was looking around, I came across this fantastic course and decided to add it to our pages for our personal learning. The **DE Zoomcamp** course is an excellent resource for anyone interested in data engineering, providing a structured curriculum that covers essential topics and practical skills.
-                  
+                                  
 DE Zoomcamp is a comprehensive data engineering course that covers various aspects of building scalable and efficient data pipelines. The course provides a hands-on approach to learning key concepts, tools, and technologies used in the field of data engineering.
 
 ### 🛠️ Features
@@ -56,4 +57,4 @@ footer {visibility: hidden;}
 </style>
 """
 
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
